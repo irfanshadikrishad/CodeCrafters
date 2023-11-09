@@ -1,7 +1,9 @@
 import chalk from "chalk";
 import express from "express";
+import router from "./router/auth-router.js";
 
 const app = express();
+app.use("/api/auth", router);
 const PORT = 3000;
 
 app.get("/", (req, res) => {
@@ -9,5 +11,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(chalk.cyan(PORT));
+  console.log(chalk.cyan(`[${PORT}] listening`));
 });
