@@ -10,7 +10,7 @@ const home = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    res.status(200).send("auth-register");
+    res.status(200).json({ body: req.body });
   } catch (error) {
     console.log(chalk.yellow(error));
   }
