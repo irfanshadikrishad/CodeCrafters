@@ -1,7 +1,9 @@
 import chalk from "chalk";
 import express from "express";
 import router from "./router/auth-router.js";
+import database from "./utils/db.js";
 
+database();
 const app = express();
 app.use(express.json());
 app.use("/api/auth", router);
