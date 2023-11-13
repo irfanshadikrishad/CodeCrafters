@@ -1,11 +1,11 @@
 import chalk from "chalk";
+import dotenv from "dotenv";
 import { connect } from "mongoose";
 
-const URI =
-  "mongodb+srv://mern-thapa:piTSlZxYKvAqeuOy@mernstack.40km1ck.mongodb.net/?retryWrites=true&w=majority";
+dotenv.config();
 
 const database = () => {
-  connect(URI)
+  connect(process.env.MONGO)
     .then(() => {
       console.log(chalk.cyan(`[database] connected`));
     })
