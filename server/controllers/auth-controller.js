@@ -37,10 +37,22 @@ const register = async (req, res) => {
           password: hashedPassword,
           isAdmin,
         });
-        user.save().then((registered) => {
-          console.log(chalk.cyan(`[registered] ${registered._id}`));
-          res.status(201).json({ registered: registered._id });
-        });
+        user
+          .save()
+          .then((registered) => {
+            async function Save() {
+              console.log(chalk.cyan(`[registered] ${registered._id}`));
+              res.status(201).json({
+                registered: registered._id,
+                token: await user.genJWT(),
+                id: await user._id.toString(),
+              });
+            }
+            Save();
+          })
+          .catch((error) => {
+            console.log(chalk.magenta(`[save] ${error.message}`));
+          });
       }
     });
   } catch (error) {
