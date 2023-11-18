@@ -4,7 +4,7 @@ import User from "../models/user-model.js";
 import bcrypt from "bcryptjs";
 
 dotenv.config();
-const { hashSync, genSaltSync } = bcrypt;
+const { hashSync, genSaltSync, compareSync } = bcrypt;
 const salt = genSaltSync(Number(process.env.SALT));
 
 const home = async (req, res) => {
@@ -61,5 +61,22 @@ const register = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  try {
+    const { email, password } = await req.body;
+    await User.findOne({ email }).then((user) => {
+      const isVerified = compareSync(password, user.password);
+      if (user && isVerified) {
+        res.status(200).json({ user });
+      } else {
+        res.status(404).json({ error: "Invalid Credentials!" });
+      }
+    });
+  } catch (error) {
+    console.log(chalk.magenta(`[login] ${error.message}`));
+    res.status(400).json({ error: "Invalid Credentials!" });
+  }
+};
+
 export default home;
-export { register };
+export { register, login };
