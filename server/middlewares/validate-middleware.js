@@ -12,7 +12,7 @@ const validate = (schema) => async (req, res, next) => {
       status,
       message,
     };
-    console.log(chalk.magenta(`[validate] ${error}`));
+    console.log(chalk.magenta(`[validate] ${message}`));
     // res.status(400).json({ error: error });
     next(error);
   }
