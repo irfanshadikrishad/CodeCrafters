@@ -58,6 +58,96 @@ nav {
   padding: 10px;
   font-size: 1rem;
   border: none;
+  color: var(--background);
   background-color: var(--primary);
   cursor: pointer;
+}
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+}
+.contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.contact_form > input,
+.contact_form > textarea {
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  resize: none;
+}
+.contact_form > textarea {
+  height: 120px;
+}
+.contact_form > button {
+  font-size: 1rem;
+  border: none;
+  background-color: var(--primary);
+  padding: 10px;
+  color: var(--background);
+  cursor: pointer;
+}
+.homeTitle {
+  font-size: 2rem;
+}
+.home_part_1 {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.homeLinks {
+  display: flex;
+  gap: 10px;
+  padding-top: 15px;
+}
+.homeLinks > a {
+  text-decoration: none;
+  color: var(--color);
+  padding: 1px 15px;
+  border-radius: 6px;
+}
+.homeLinks > a:first-child {
+  background-color: var(--primary);
+  color: var(--background);
+}
+.homeLinks > a:last-child {
+  border: 2px solid var(--primary);
+}
+.home_part_2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  background-color: var(--secondary);
+  padding: 10px;
+  border-radius: 6px;
+  margin: 50px 0 50px 0;
+}
+.home_part_2 > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--background);
+  border-radius: 6px;
+}
+.home_part_3 {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  align-items: center;
+  gap: 80px;
+}
+/* ---------- */
+/* responsive */
+/* ---------- */
+@media screen and (max-width: 980px) {
+  .container {
+    width: 80%;
+  }
 }
