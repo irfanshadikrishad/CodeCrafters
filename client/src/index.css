@@ -36,6 +36,9 @@ nav {
   text-decoration: none;
   color: var(--color);
 }
+.navBtns > .active {
+  color: var(--primary);
+}
 .register {
   display: grid;
   grid-template-columns: 0.8fr 1fr;
@@ -142,6 +145,16 @@ nav {
   grid-template-columns: 1fr 1.8fr;
   align-items: center;
   gap: 80px;
+}
+.e404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+.e404_img {
+  width: 250px;
 }
 /* ---------- */
 /* responsive */
