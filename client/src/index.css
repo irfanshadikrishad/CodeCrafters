@@ -145,6 +145,7 @@ nav {
   grid-template-columns: 1fr 1.8fr;
   align-items: center;
   gap: 80px;
+  margin-bottom: 50px;
 }
 .e404 {
   display: flex;
@@ -155,6 +156,18 @@ nav {
 }
 .e404_img {
   width: 250px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }
 /* ---------- */
 /* responsive */

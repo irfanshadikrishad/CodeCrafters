@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [register, setRegister] = useState({
     username: "",
     email: "",
@@ -11,9 +15,33 @@ export default function Register() {
     const { name, value } = e.target;
     setRegister({ ...register, [name]: value });
   };
+  const errorToast = (error) => {
+    toast.warn(`${error}`, {
+      position: "top-right",
+      autoClose: 1200,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   const submit = async (e) => {
     e.preventDefault();
-    console.log(register);
+    const request = await fetch("http://localhost:3000/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(register),
+    });
+    const response = await request.json();
+    if (request.status === 201) {
+      navigate("/");
+    } else {
+      errorToast(response.error);
+    }
   };
   return (
     <section className="container register">
@@ -58,6 +86,7 @@ export default function Register() {
           <button type="submit">Register</button>
         </form>
       </div>
+      <ToastContainer />
     </section>
   );
 }

@@ -6,8 +6,8 @@ dotenv.config();
 
 const database = () => {
   connect(process.env.MONGO)
-    .then(() => {
-      console.log(chalk.cyan(`[database] connected`));
+    .then((e) => {
+      console.log(chalk.cyan(`[database] coonected`));
     })
     .catch((error) => {
       console.log(chalk.yellow(`[database] ${error}`));
