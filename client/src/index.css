@@ -139,6 +139,7 @@ nav {
   padding: 10px;
   background-color: var(--background);
   border-radius: 6px;
+  text-align: center;
 }
 .home_part_3 {
   display: grid;

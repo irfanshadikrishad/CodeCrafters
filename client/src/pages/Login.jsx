@@ -1,6 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../store/auth";
 
 export default function Login() {
+  const { storeTokenInLS } = useAuth();
+  const navigate = useNavigate();
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -9,9 +15,34 @@ export default function Login() {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
   };
+  const errorToast = (error) => {
+    toast.warn(`${error}`, {
+      position: "top-right",
+      autoClose: 1200,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   const submit = async (e) => {
     e.preventDefault();
-    console.log(login);
+    const request = await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(login),
+    });
+    const response = await request.json();
+    if (request.status === 200) {
+      storeTokenInLS(response.token);
+      navigate("/");
+    } else {
+      errorToast(response.error);
+    }
   };
   return (
     <section className="container register">
@@ -40,6 +71,7 @@ export default function Login() {
           <button type="submit">Login</button>
         </form>
       </div>
+      <ToastContainer />
     </section>
   );
 }

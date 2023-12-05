@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
+  const { storeTokenInLS } = useAuth();
   const navigate = useNavigate();
   const [register, setRegister] = useState({
     username: "",
@@ -38,6 +40,8 @@ export default function Register() {
     });
     const response = await request.json();
     if (request.status === 201) {
+      // await localStorage.setItem("logger", response.token);
+      await storeTokenInLS(response.token);
       navigate("/");
     } else {
       errorToast(response.error);

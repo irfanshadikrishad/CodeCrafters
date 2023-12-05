@@ -67,7 +67,11 @@ const login = async (req, res) => {
     await User.findOne({ email }).then((user) => {
       const isVerified = compareSync(password, user.password);
       if (user && isVerified) {
-        res.status(200).json({ user });
+        res.status(200).json({
+          user: user.email,
+          token: user.genJWT(),
+          id: user._id.toString(),
+        });
       } else {
         res.status(404).json({ error: "Invalid Credentials!" });
       }
