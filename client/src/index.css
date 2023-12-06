@@ -119,6 +119,8 @@ nav {
 .homeLinks > a:first-child {
   background-color: var(--primary);
   color: var(--background);
+  display: flex;
+  align-items: center;
 }
 .homeLinks > a:last-child {
   border: 2px solid var(--primary);

@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 export default function HomeCardTemplate({ tag, title, body, image }) {
   return (
     <div className="home_part_1">
