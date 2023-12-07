@@ -82,5 +82,15 @@ const login = async (req, res) => {
   }
 };
 
+// to send user data
+const user = async (req, res) => {
+  try {
+    const user_data = await req.user;
+    return res.status(200).json({ user: user_data });
+  } catch (error) {
+    console.log(chalk.magenta(`[error] ${error}`));
+  }
+};
+
 export default home;
-export { register, login };
+export { register, login, user };
