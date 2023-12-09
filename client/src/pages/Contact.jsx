@@ -1,11 +1,22 @@
 import { useState } from "react";
+import { useAuth } from "../store/auth";
 
 export default function Contact() {
+  const [defaultUser, setDefaultUser] = useState(true);
+  const { user } = useAuth();
   const [contact, setContact] = useState({
     username: "",
     email: "",
     message: "",
   });
+  if (user && defaultUser) {
+    setContact({
+      username: user.user.username,
+      email: user.user.email,
+      message: ""
+    })
+    setDefaultUser(false);
+  }
   const handleInput = (e) => {
     const { value, name } = e.target;
     setContact({ ...contact, [name]: value });
