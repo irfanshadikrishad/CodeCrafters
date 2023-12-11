@@ -7,7 +7,7 @@ const contactForm = async (req, res) => {
     await Contact.create(response);
     return res.status(200).json({ message: "Message sent successfully." });
   } catch (error) {
-    console.log(chalk.magenta(`[controller] ${error.message}`));
+    console.log(chalk.magenta(`[controller-301] ${error.message}`));
     return res.status(400).json({ message: error.message });
   }
 };

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../store/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Contact() {
   const [defaultUser, setDefaultUser] = useState(true);
@@ -21,9 +23,46 @@ export default function Contact() {
     const { value, name } = e.target;
     setContact({ ...contact, [name]: value });
   };
+  function successToast(success) {
+    toast.success(success, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  }
+  function errorToast(error) {
+    toast.error(error, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  }
   const submit = async (e) => {
     e.preventDefault();
-    console.log(contact);
+    const request = await fetch("http://localhost:3000/api/form/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(contact)
+    })
+    const response = await request.json();
+    if (request.status === 200) {
+      successToast(response.message);
+      setContact({ ...contact, message: "" });
+    } else {
+      errorToast(response.message);
+    }
   };
   return (
     <section className="container contact">
@@ -62,6 +101,7 @@ export default function Contact() {
           <button type="submit">Send</button>
         </form>
       </div>
+      <ToastContainer />
     </section>
   );
 }
