@@ -6,6 +6,7 @@ import router from "./router/auth-router.js";
 import contactForm from "./controllers/contact-controller.js";
 import database from "./utils/db.js";
 import errorMiddleware from "./middlewares/error-middleware.js";
+import service from "./router/service-router.js";
 
 database();
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(
 );
 app.use("/api/auth", router);
 app.use("/api/form", contactForm);
+app.use("/api/data", service);
 app.use(errorMiddleware);
 
 app.get("/", (req, res) => {
