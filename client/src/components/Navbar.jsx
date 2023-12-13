@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav>
       <div className="container navBtn">
-        <NavLink to="/">vit</NavLink>
+        <NavLink to="/">&lt; vit &gt;</NavLink>
         <div className="navBtns">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>

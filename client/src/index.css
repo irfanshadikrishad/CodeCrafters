@@ -1,63 +1,76 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
 :root {
   --color: #37474f;
   --background: whitesmoke;
   --primary: #92e3a9;
   --secondary: white;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
+
 body {
   color: var(--color);
   background-color: var(--background);
   font-family: "Poppins", sans-serif;
 }
+
 .container {
   width: 50%;
   margin: 0 auto;
 }
+
 nav {
   padding: 20px 0;
   font-size: 1rem;
 }
+
 .navBtn {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .navBtns {
   display: flex;
   gap: 10px;
 }
-.navBtns > a,
-.navBtn > a {
+
+.navBtns>a,
+.navBtn>a {
   text-decoration: none;
   color: var(--color);
 }
-.navBtns > .active {
+
+.navBtns>.active {
   color: var(--primary);
 }
+
 .register {
   display: grid;
   grid-template-columns: 0.8fr 1fr;
   gap: 10px;
   align-items: center;
 }
-.register_form > form {
+
+.register_form>form {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.register_form > form > input {
+
+.register_form>form>input {
   padding: 10px;
   border: none;
   background-color: var(--secondary);
   font-size: 1rem;
   outline: none;
 }
-.register_form > form > button {
+
+.register_form>form>button {
   padding: 10px;
   font-size: 1rem;
   border: none;
@@ -65,19 +78,22 @@ nav {
   background-color: var(--primary);
   cursor: pointer;
 }
+
 .contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   align-items: center;
 }
+
 .contact_form {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.contact_form > input,
-.contact_form > textarea {
+
+.contact_form>input,
+.contact_form>textarea {
   font-size: 1rem;
   padding: 10px;
   border: none;
@@ -85,10 +101,12 @@ nav {
   font-family: "Poppins", sans-serif;
   resize: none;
 }
-.contact_form > textarea {
+
+.contact_form>textarea {
   height: 120px;
 }
-.contact_form > button {
+
+.contact_form>button {
   font-size: 1rem;
   border: none;
   background-color: var(--primary);
@@ -96,35 +114,42 @@ nav {
   color: var(--background);
   cursor: pointer;
 }
+
 .homeTitle {
   font-size: 2rem;
 }
+
 .home_part_1 {
   display: grid;
   grid-template-columns: 1.7fr 1fr;
   gap: 80px;
   align-items: center;
 }
+
 .homeLinks {
   display: flex;
   gap: 10px;
   padding-top: 15px;
 }
-.homeLinks > a {
+
+.homeLinks>a {
   text-decoration: none;
   color: var(--color);
   padding: 1px 15px;
   border-radius: 6px;
 }
-.homeLinks > a:first-child {
+
+.homeLinks>a:first-child {
   background-color: var(--primary);
   color: var(--background);
   display: flex;
   align-items: center;
 }
-.homeLinks > a:last-child {
+
+.homeLinks>a:last-child {
   border: 2px solid var(--primary);
 }
+
 .home_part_2 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -134,7 +159,8 @@ nav {
   border-radius: 6px;
   margin: 50px 0 50px 0;
 }
-.home_part_2 > div {
+
+.home_part_2>div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,6 +169,7 @@ nav {
   border-radius: 6px;
   text-align: center;
 }
+
 .home_part_3 {
   display: grid;
   grid-template-columns: 1fr 1.8fr;
@@ -150,6 +177,7 @@ nav {
   gap: 80px;
   margin-bottom: 50px;
 }
+
 .e404 {
   display: flex;
   flex-direction: column;
@@ -157,21 +185,86 @@ nav {
   justify-content: center;
   height: 50vh;
 }
+
 .e404_img {
   width: 250px;
 }
+
 ::-webkit-scrollbar {
   width: 5px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
+
+.services_header {
+  font-weight: 400;
+}
+
+.services_main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.serviece_h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.serviece_h>h1 {
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 20px;
+}
+
+.serviece_h>p {
+  color: var(--primary);
+}
+
+.service {
+  padding: 20px;
+  background-color: var(--secondary);
+  border-radius: 10px;
+}
+
+.service_provider {
+  font-size: 0.95rem;
+  opacity: 90%;
+}
+
+.service_by {
+  font-style: italic;
+  opacity: 50%;
+}
+
+.service_desc {
+  font-size: 0.95rem;
+  opacity: 95%;
+}
+
+.service_image {
+  width: 70%;
+}
+
+.service_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ---------- */
 /* responsive */
 /* ---------- */
