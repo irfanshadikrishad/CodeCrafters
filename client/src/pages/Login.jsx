@@ -40,8 +40,10 @@ export default function Login() {
     if (request.status === 200) {
       storeTokenInLS(response.token);
       navigate("/");
-    } else {
+    } else if (request.status === 404) {
       errorToast(response.error);
+    } else {
+      errorToast(response.message);
     }
   };
   return (

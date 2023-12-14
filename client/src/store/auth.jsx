@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }) => {
   }
   useEffect(() => {
     authenticate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user }}>

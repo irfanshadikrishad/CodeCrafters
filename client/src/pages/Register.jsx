@@ -44,7 +44,7 @@ export default function Register() {
       await storeTokenInLS(response.token);
       navigate("/");
     } else {
-      errorToast(response.error);
+      errorToast(response.message);
     }
   };
   return (
