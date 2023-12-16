@@ -67,7 +67,10 @@ export default function Contact() {
   return (
     <section className="container contact">
       <div>
-        <img src="/contact.svg" alt="contact image" draggable="false" />
+        <img className="contact_image"
+          src="/contact.svg"
+          alt="contact image"
+          draggable="false" />
       </div>
       <div>
         <h1>Contact Us</h1>

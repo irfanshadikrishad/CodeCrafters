@@ -14,7 +14,7 @@ export default function HomeCardTemplate({ tag, title, body, image }) {
         </div>
       </div>
       <div>
-        <img src={image} alt="astronaut" draggable="false" />
+        <img className="about_Image" src={image} alt="astronaut" draggable="false" />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
 
   // storing token in localStorage
   const storeTokenInLS = (serverToken) => {
+    setToken(serverToken);
     return localStorage.setItem("logger", serverToken);
   };
   // logging out user
@@ -30,7 +31,6 @@ export const AuthProvider = ({ children }) => {
       if (request.status === 200) {
         const data = await request.json();
         setUser(data);
-        console.log(user);
       } else {
         console.log(request.json());
       }

@@ -37,13 +37,12 @@ export default function Login() {
       body: JSON.stringify(login),
     });
     const response = await request.json();
+    console.log(response);
     if (request.status === 200) {
       storeTokenInLS(response.token);
       navigate("/");
-    } else if (request.status === 404) {
-      errorToast(response.error);
     } else {
-      errorToast(response.message);
+      errorToast(response.error);
     }
   };
   return (

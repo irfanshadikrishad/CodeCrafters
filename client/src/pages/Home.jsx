@@ -19,7 +19,7 @@ export default function Home() {
             <NavLink>Learn More</NavLink>
           </div>
         </div>
-        <div>
+        <div className="hp1_o2">
           <img src="/astronaut.svg" alt="astronaut" draggable="false" />
         </div>
       </div>
