@@ -7,7 +7,7 @@ export default function Home() {
       <div className="home_part_1">
         <div>
           <p>Best IT company</p>
-          <h1 className="homeTitle">Welcome to Vit</h1>
+          <h1 className="homeTitle">Welcome to CodeCrafters</h1>
           <p>
             Are you ready to take your business to the next level with
             cutting-edge IT solutions? Look no further! At Vit we specialize in
@@ -26,11 +26,11 @@ export default function Home() {
       <HomeStats />
       <div className="home_part_3">
         <div>
-          <img src="/computer.svg" alt="computer" draggable="false" />
+          <img className="home_getstartedImg" src="/computer.svg" alt="computer" draggable="false" />
         </div>
         <div>
           <p>We are here to help you</p>
-          <h1>Get started today</h1>
+          <h1 className="getStarted">Get started today</h1>
           <p>
             Ready to take the first step towards a more efficient and secure IT
             infrastructure? Contact us today for a free consulation and lets
