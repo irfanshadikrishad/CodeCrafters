@@ -329,8 +329,8 @@ nav {
   }
 
   .hp1_o2 {
+    display: none;
     order: -1;
-    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -353,6 +353,20 @@ nav {
 
   .home_part_2 {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .register {
+    grid-template-columns: 1fr;
+  }
+
+  .register_image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .register_image>img {
+    width: 50%;
   }
 }
 
@@ -378,23 +392,20 @@ nav {
     display: none;
   }
 
-  .register {
-    grid-template-columns: 1fr 2fr;
-  }
-
   .services_main {
     grid-template-columns: 1fr;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .register {
-    grid-template-columns: 1fr;
-  }
 
   .homeTitle,
   .getStarted {
     font-size: 1.5rem;
     line-height: 35px;
+  }
+
+  .register_image>img {
+    width: 70%;
   }
 }
