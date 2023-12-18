@@ -24,8 +24,9 @@ app.use("/api/form", contactForm);
 app.use("/api/data", service);
 app.use(errorMiddleware);
 
+// SERVER Status
 app.get("/", (req, res) => {
-  res.status(200).send("hello, express");
+  res.status(200).json({ status: 200 });
 });
 
 app.listen(process.env.PORT, () => {

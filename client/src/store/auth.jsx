@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   // Authenticating User
   const authenticate = async () => {
     try {
-      const request = await fetch("http://localhost:3000/api/auth/user", {
+      const request = await fetch("https://codecrafters.up.railway.app/api/auth/user", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ` + localStorage.getItem("logger")

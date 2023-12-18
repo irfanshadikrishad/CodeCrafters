@@ -5,7 +5,7 @@ export default function Service() {
   const [services, setServices] = useState([]);
   useEffect(() => {
     async function Services() {
-      const request = await fetch("http://localhost:3000/api/data/service");
+      const request = await fetch("https://codecrafters.up.railway.app/api/data/service");
       const response = await request.json();
       if (request.ok) {
         setServices(response);

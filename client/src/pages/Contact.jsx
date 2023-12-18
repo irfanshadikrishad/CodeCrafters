@@ -49,7 +49,7 @@ export default function Contact() {
   }
   const submit = async (e) => {
     e.preventDefault();
-    const request = await fetch("http://localhost:3000/api/form/contact", {
+    const request = await fetch("https://codecrafters.up.railway.app/api/form/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
