@@ -26,7 +26,7 @@ export default function Contact() {
   function successToast(success) {
     toast.success(success, {
       position: "top-right",
-      autoClose: 2000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -38,7 +38,7 @@ export default function Contact() {
   function errorToast(error) {
     toast.error(error, {
       position: "top-right",
-      autoClose: 2000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

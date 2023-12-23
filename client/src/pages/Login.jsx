@@ -37,7 +37,6 @@ export default function Login() {
       body: JSON.stringify(login),
     });
     const response = await request.json();
-    console.log(response);
     if (request.status === 200) {
       storeTokenInLS(response.token);
       navigate("/");
