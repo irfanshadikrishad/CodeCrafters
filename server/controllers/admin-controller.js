@@ -4,13 +4,18 @@ import Contact from "../models/contact-model.js";
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find({}).select({
-      password: 0,
-    });
-    if (users && users.length !== 0) {
-      res.status(200).json(users);
+    const isAdmin = await req.user.isAdmin;
+    if (isAdmin) {
+      const users = await User.find({}).select({
+        password: 0,
+      });
+      if (users && users.length !== 0) {
+        res.status(200).json(users);
+      } else {
+        res.status(404).json({ message: "No users found!" });
+      }
     } else {
-      res.status(404).json({ message: "No users found!" });
+      res.status(401).json({ message: "Unauthorized! • Access denied!" });
     }
   } catch (error) {
     console.log(chalk.magenta(`[getAllUsers] ${error.message}`));
@@ -20,11 +25,16 @@ const getAllUsers = async (req, res) => {
 
 const getAllContacts = async (req, res) => {
   try {
-    const contacts = await Contact.find();
-    if (contacts && contacts.length !== 0) {
-      res.status(200).json(contacts);
+    const isAdmin = await req.user.isAdmin;
+    if (isAdmin) {
+      const contacts = await Contact.find();
+      if (contacts && contacts.length !== 0) {
+        res.status(200).json(contacts);
+      } else {
+        res.status(404).json({ message: "No Contacts!" });
+      }
     } else {
-      res.status(404).json({ message: "No Contacts!" });
+      res.status(401).json({ message: "Unauthorized! • Access denied!" });
     }
   } catch (error) {
     console.log(chalk.magenta(`[getAllContacts] ${error.message}`));

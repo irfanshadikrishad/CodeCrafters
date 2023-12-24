@@ -9,20 +9,26 @@ const { verify } = pkg;
 const authMiddleware = async (req, res, next) => {
   try {
     const authorization = await req.header("Authorization");
-    const token = await authorization.split(" ")[1];
-    const isVerified = verify(token, process.env.SECRET);
-    if (!token && !isVerified) {
+
+    if (!authorization) {
       return res.status(401).json({ error: "Unauthorized!" });
     } else {
-      const user = await User.findOne({ email: isVerified.email }).select({
-        password: 0,
-      });
-      //   custom properties
-      req.user = user;
-      req.token = token;
-      req.userID = user._id;
-      // get out from middleware
-      next();
+      const token = await authorization.split(" ")[1];
+      const isVerified = verify(token, process.env.SECRET);
+
+      if (isVerified) {
+        const user = await User.findOne({ email: isVerified.email }).select({
+          password: 0,
+        });
+        //   custom properties
+        req.user = user;
+        req.token = token;
+        req.userID = user._id;
+        // get out from middleware
+        next();
+      } else {
+        return res.status(401).json({ error: "Unauthorized!" });
+      }
     }
   } catch (error) {
     console.log(chalk.magenta(`[error] ${error}`));
