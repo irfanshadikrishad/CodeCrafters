@@ -397,6 +397,26 @@ nav {
   }
 }
 
+.admin_navbar {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin_navbar>a {
+  text-decoration: none;
+  color: var(--color);
+}
+
+.admin_navbar>a.active {
+  color: var(--primary);
+}
+
+.admin {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 10px;
+}
+
 @media screen and (max-width: 425px) {
 
   .homeTitle,

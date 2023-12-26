@@ -8,6 +8,10 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Error404 from "./pages/Error404";
 import Logout from "./pages/Logout";
+import AdminLayout from "./components/layouts/AdminLayout";
+import AdminUsers from "./pages/AdminUsers";
+import AdminContacts from "./pages/AdminContacts";
+import AdminServices from "./pages/AdminServices";
 
 export default function App() {
   return (
@@ -21,6 +25,11 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/admin" element={<AdminLayout />}> // Nested Route
+          <Route path="users" element={<AdminUsers />} />
+          <Route path="contacts" element={<AdminContacts />} />
+          <Route path="services" element={<AdminServices />} />
+        </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
