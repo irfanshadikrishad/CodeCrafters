@@ -3,6 +3,7 @@ import ServiceBox from "../components/ServiceBox";
 
 export default function Service() {
   const [services, setServices] = useState([]);
+
   useEffect(() => {
     async function Services() {
       const request = await fetch("https://codecrafters.up.railway.app/api/data/service");

@@ -415,6 +415,111 @@ nav {
   display: grid;
   grid-template-columns: 1fr 5fr;
   gap: 10px;
+  padding-bottom: 30px;
+}
+
+.adminUsers {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+  padding: 10px;
+  background-color: var(--secondary);
+  border-radius: 5px;
+}
+
+.adminUserIndividual {
+  padding: 10px;
+  background-color: var(--background);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin_button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: tomato;
+}
+
+.adminContacts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  padding: 10px;
+  background-color: var(--secondary);
+  border-radius: 7px;
+}
+
+.adminContactIndividual {
+  padding: 10px;
+  background-color: var(--background);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin_services {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  background-color: var(--secondary);
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.serviceTitle {
+  font-weight: 500;
+}
+
+.servicePOP {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.adminServiceIndividual {
+  position: relative;
+  padding: 10px;
+  background-color: var(--background);
+  border-radius: 7px;
+}
+
+.serviceDelete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .admin {
+    grid-template-columns: 1fr;
+  }
+
+  .admin_navbar {
+    flex-direction: row;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .admin_services {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 90%;
+  }
+
+  .admin_services {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media screen and (max-width: 425px) {

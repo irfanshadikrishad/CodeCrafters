@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user }}>
+    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, token }}>
       {children}
     </AuthContext.Provider>
   );
