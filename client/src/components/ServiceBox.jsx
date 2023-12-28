@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 export default function ServiceBox({ image, provider, price, title, desc }) {
     return <section className="service">
         <div className="service_img">

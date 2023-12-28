@@ -67,6 +67,7 @@ export default function Login() {
             value={login.password}
             type="password"
             placeholder="Password"
+            autoComplete="true"
           />
           <button type="submit">Login</button>
         </form>

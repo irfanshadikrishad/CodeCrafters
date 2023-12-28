@@ -2,7 +2,7 @@ import chalk from "chalk";
 import User from "../models/user-model.js";
 import Contact from "../models/contact-model.js";
 
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res, next) => {
   try {
     const isAdmin = await req.user.isAdmin;
     if (isAdmin) {
@@ -23,7 +23,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const getAllContacts = async (req, res) => {
+const getAllContacts = async (req, res, next) => {
   try {
     const isAdmin = await req.user.isAdmin;
     if (isAdmin) {
@@ -42,4 +42,34 @@ const getAllContacts = async (req, res) => {
   }
 };
 
-export { getAllUsers, getAllContacts };
+const deleteUser = async (req, res, next) => {
+  try {
+    const { ID } = await req.body;
+    const deletedUser = await User.findByIdAndDelete(ID);
+    if (deletedUser) {
+      res.status(200).json({ message: "user deleted" });
+    } else {
+      res.status(400).json({ message: "something went wrong" });
+    }
+  } catch (error) {
+    console.log(chalk.magenta(`[deleteUser] ${error.message}`));
+    next(error);
+  }
+};
+
+const deleteMessage = async (req, res, next) => {
+  try {
+    const { ID } = await req.body;
+    const deletedCotact = await Contact.findByIdAndDelete(ID);
+    if (deletedCotact) {
+      res.status(200).json({ message: "message deleted" });
+    } else {
+      res.status(400).json({ message: "something went wrong" });
+    }
+  } catch (error) {
+    console.log(chalk.magenta(`[deleteMessage] ${error.message}`));
+    next(error);
+  }
+};
+
+export { getAllUsers, getAllContacts, deleteUser, deleteMessage };

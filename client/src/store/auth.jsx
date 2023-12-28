@@ -2,14 +2,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("logger"));
   const [user, setUser] = useState("");
 
   let isLoggedIn = !!token;
 
-  // storing token in localStorage
   const storeTokenInLS = (serverToken) => {
     setToken(serverToken);
     return localStorage.setItem("logger", serverToken);
@@ -40,7 +38,6 @@ export const AuthProvider = ({ children }) => {
   }
   useEffect(() => {
     authenticate();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, token }}>
@@ -49,7 +46,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   return useContext(AuthContext);
 };

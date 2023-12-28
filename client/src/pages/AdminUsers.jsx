@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+// STORE AUTH
 import { useAuth } from "../store/auth.jsx";
+// ICONS
 import { PiUserCircleMinusFill } from "react-icons/pi";
+// TOASTIFY
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AdminUsers() {
     const { token } = useAuth();
@@ -22,9 +27,52 @@ export default function AdminUsers() {
         }
     }
 
+    function successToast(success) {
+        toast.success(success, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+    function errorToast(error) {
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
+    const deleteUser = async (ID) => {
+        const request = await fetch("https://codecrafters.up.railway.app/api/admin/users", {
+            method: "DELETE",
+            headers: {
+                // Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ` + token
+            },
+            body: JSON.stringify({ ID: ID })
+        })
+        const response = await request.json();
+        if (request.status === 200) {
+            successToast(response.message);
+        } else {
+            errorToast(response.message)
+        }
+    }
+
     useEffect(() => {
         getUser();
-    }, [])
+    }, [deleteUser])
     return <section className="admin_users">
         <div className="adminUsers">
             {users && users.map((user) => {
@@ -34,10 +82,13 @@ export default function AdminUsers() {
                         <p>{user.email}</p>
                     </div>
                     <div>
-                        <button className="admin_button">{<PiUserCircleMinusFill />}</button>
+                        <button onClick={() => { deleteUser(user._id) }} className="admin_button">
+                            {<PiUserCircleMinusFill />}
+                        </button>
                     </div>
                 </div>
             })}
         </div>
+        <ToastContainer />
     </section>
 }

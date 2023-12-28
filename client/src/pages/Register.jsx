@@ -86,6 +86,7 @@ export default function Register() {
             value={register.password}
             type="password"
             placeholder="Password"
+            autoComplete="true"
           />
           <button type="submit">Register</button>
         </form>
