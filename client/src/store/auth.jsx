@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("logger"));
   const [user, setUser] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   let isLoggedIn = !!token;
 
@@ -29,6 +30,7 @@ export const AuthProvider = ({ children }) => {
       if (request.status === 200) {
         const data = await request.json();
         setUser(data);
+        setIsAdmin(data.user.isAdmin);
       } else {
         console.log(request.json());
       }
@@ -40,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     authenticate();
   }, [])
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, token }}>
+    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, token, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

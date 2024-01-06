@@ -72,4 +72,44 @@ const deleteMessage = async (req, res, next) => {
   }
 };
 
-export { getAllUsers, getAllContacts, deleteUser, deleteMessage };
+const getSingleUser = async (req, res, next) => {
+  try {
+    const { id } = await req.params;
+    const user = await User.findById(id).select({
+      password: 0,
+    });
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).json({ message: "user not found" });
+    }
+  } catch (error) {
+    console.log(chalk.magenta(`[getSingleUser] ${error.message}`));
+    next(error);
+  }
+};
+
+const updateUser = async (req, res, next) => {
+  try {
+    const { id } = await req.params;
+    const change = await req.body;
+    const update = await User.findByIdAndUpdate(id, change);
+    if (update) {
+      res.status(200).json(update);
+    } else {
+      res.status(400).json({ message: "something went wrong" });
+    }
+  } catch (error) {
+    console.log(chalk.magenta(`[updateUser] ${error.message}`));
+    next(error);
+  }
+};
+
+export {
+  getAllUsers,
+  getAllContacts,
+  deleteUser,
+  deleteMessage,
+  getSingleUser,
+  updateUser,
+};

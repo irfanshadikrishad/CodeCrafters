@@ -4,6 +4,8 @@ import {
   getAllContacts,
   deleteUser,
   deleteMessage,
+  getSingleUser,
+  updateUser,
 } from "../controllers/admin-controller.js";
 
 import authMiddleware from "../middlewares/authMiddleware.js";
@@ -19,5 +21,10 @@ router
   .route("/contacts")
   .get(authMiddleware, getAllContacts)
   .delete(authMiddleware, adminMiddleware, deleteMessage);
+
+router
+  .route("/users/:id")
+  .get(authMiddleware, adminMiddleware, getSingleUser)
+  .patch(authMiddleware, adminMiddleware, updateUser);
 
 export default router;

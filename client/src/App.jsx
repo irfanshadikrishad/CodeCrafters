@@ -12,8 +12,12 @@ import AdminLayout from "./components/layouts/AdminLayout";
 import AdminUsers from "./pages/AdminUsers";
 import AdminContacts from "./pages/AdminContacts";
 import AdminServices from "./pages/AdminServices";
+import AdminEditUser from "./pages/AdminEditUser";
+import { useAuth } from "./store/auth";
 
 export default function App() {
+  const { isAdmin } = useAuth();
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -25,11 +29,12 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/admin" element={<AdminLayout />}> // Nested Route
+        {isAdmin && <Route path="/admin" element={<AdminLayout />}> // Nested Route
           <Route path="users" element={<AdminUsers />} />
           <Route path="contacts" element={<AdminContacts />} />
           <Route path="services" element={<AdminServices />} />
-        </Route>
+        </Route>}
+        {isAdmin && <Route path="/admin/users/:id/edit" element={<AdminEditUser />} />}
         <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>

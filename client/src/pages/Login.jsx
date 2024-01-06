@@ -29,7 +29,7 @@ export default function Login() {
   };
   const submit = async (e) => {
     e.preventDefault();
-    const request = await fetch("https://codecrafters.up.railway.app/api/auth/login", {
+    const request = await fetch("http://localhost:3000/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

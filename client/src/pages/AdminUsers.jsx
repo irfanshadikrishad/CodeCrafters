@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 // STORE AUTH
 import { useAuth } from "../store/auth.jsx";
 // ICONS
 import { PiUserCircleMinusFill } from "react-icons/pi";
+import { RiEditCircleLine } from "react-icons/ri";
 // TOASTIFY
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -81,8 +83,14 @@ export default function AdminUsers() {
                         <p>{user.username}</p>
                         <p>{user.email}</p>
                     </div>
-                    <div>
-                        <button onClick={() => { deleteUser(user._id) }} className="admin_button">
+                    <div className="adminButtons">
+                        <NavLink to={`/admin/users/${user._id}/edit`}
+                            className="admin_button">
+                            {<RiEditCircleLine />}
+                        </NavLink>
+                        <button
+                            onClick={() => { deleteUser(user._id) }}
+                            className="admin_button admin_buttonDelete">
                             {<PiUserCircleMinusFill />}
                         </button>
                     </div>

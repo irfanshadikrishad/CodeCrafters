@@ -436,13 +436,24 @@ nav {
   justify-content: space-between;
 }
 
+.adminButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
 .admin_button {
   border: none;
   background-color: transparent;
   display: flex;
   font-size: 1.5rem;
   cursor: pointer;
-  color: tomato;
+  color: var(--color);
+}
+
+.admin_buttonDelete {
+  color: rgb(253, 134, 113);
 }
 
 .adminContacts {
@@ -493,6 +504,32 @@ nav {
   position: absolute;
   top: 10px;
   right: 10px;
+  color: rgb(253, 134, 113);
+}
+
+.editUserForm {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.editUserForm>input {
+  font-size: 1rem;
+  background-color: var(--secondary);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 7px;
+  outline: none;
+}
+
+.editUserForm>button {
+  font-size: 1rem;
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--primary);
+  border-radius: 7px;
+  color: var(--background);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {
